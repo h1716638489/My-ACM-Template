@@ -22,7 +22,7 @@ struct Suffix_Array
             //基数排序第一关键字
             for (int i = 0; i < m; i++) c[i] = 0;
             for (int i = 0; i < n; i++) c[x[y[i]]]++;
-            for (int i = 0; i < m; i++) c[i] += c[i - 1];
+            for (int i = 1; i < m; i++) c[i] += c[i - 1];
             for (int i = n - 1; ~i; i--) sa[--c[x[y[i]]]] = y[i];
             //根据sa和y数组计算新的x数组
             swap(x, y);

@@ -25,20 +25,20 @@
     rulesepcolor = \color{red!20!green!20!blue!20},
     showstringspaces = false,
 }
-\title{ACM/ICPC Template Manaual}
-\author{X.D. Network Ingenuity}
+\title{ICPC Template Manual}
+\author{Failed System Test}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[C]{ACM/ICPC Template Manaual, X.D. Network Ingenuity}
+\fancyhead[C]{ICPC Template Manual, Failed System Test}
 \begin{document}\small
 \begin{titlepage}
 \begin{center}
 \vspace*{0.5cm}\includegraphics[width=0.75\textwidth]{logo.jpg} \\ [2cm]
 \HRule \\ [1cm]
-\textbf{\Huge{ACM/ICPC Template Manaual}} \\ [0.5cm]
+\textbf{\Huge{ICPC Template Manual}} \\ [0.5cm]
 \HRule \\ [4cm]
 \textbf{\Huge{Shanghai University}} \\ [1cm]
-\LARGE{X.D. Network Ingenuity}
+\LARGE{Failed System Test}
 \vfill
 \Large{\today}
 \end{center}
@@ -1376,7 +1376,7 @@ struct Suffix_Array
             //基数排序第一关键字
             for (int i = 0; i < m; i++) c[i] = 0;
             for (int i = 0; i < n; i++) c[x[y[i]]]++;
-            for (int i = 0; i < m; i++) c[i] += c[i - 1];
+            for (int i = 1; i < m; i++) c[i] += c[i - 1];
             for (int i = n - 1; ~i; i--) sa[--c[x[y[i]]]] = y[i];
             //根据sa和y数组计算新的x数组
             swap(x, y);
@@ -1419,7 +1419,8 @@ struct Suffix_Array
         if (a > b) swap(a, b);
         return rmq(a + 1, b);
     }
-};\end{lstlisting}
+};
+\end{lstlisting}
 \subsection{Suffix Automation}
 \begin{lstlisting}
 const int maxn = "Edit";
@@ -3284,7 +3285,7 @@ struct ISAP
         for (int i = 0; i < n; i++)
             if (d[i] < INF) num[d[i]]++;
         int x = s;
-        memset(cur, 0);
+        memset(cur, 0, sizeof(cur));
         while (d[s] < n)
         {
             if (x == t)
@@ -3927,7 +3928,7 @@ int getTangents(Circle A, Circle B, Point* a, Point* b)
         return 1;
     }
     //有外共切线
-    double ang = acos(A.r - B.r) / sqrt(d2);
+    double ang = acos((A.r - B.r) / sqrt(d2));
     a[cnt] = A.point(base + ang);
     b[cnt] = B.point(base + ang);
     cnt++;
@@ -3973,7 +3974,8 @@ Circle InscribedCircle(Point p1, Point p2, Point p3)
     double c = Length(p1 - p2);
     Point p = (p1 * a + p2 * b + p3 * c) / (a + b + c);
     return Circle(p, DistanceToLine(p, p1, p2));
-}\end{lstlisting}
+}
+\end{lstlisting}
 \subsubsection{Polygon}
 \begin{lstlisting}
 typedef vector<Point> Polygon;
@@ -4339,7 +4341,7 @@ struct bint
     short int w[100];
     bint(int x = 0)
     {
-        l = x == 0, memset(w, 0);
+        l = x == 0, memset(w, 0, sizeof(w));
         while (x) w[l++] = x % 10, x /= 10;
     }
     bool operator<(const bint& x) const
